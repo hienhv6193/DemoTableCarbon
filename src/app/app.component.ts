@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() model = new TableModel();
   disabled = false;
   @Input() size = "md";
-  @Input() showSelectionColumn = true;
+  @Input() showSelectionColumn = false;
   @Input() enableSingleSelect = false;
   @Input() striped = false;
   @Input() sortable = true;
@@ -152,13 +152,37 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit {
     ];
   }
 
-  isActiveOpenCUD: boolean = false;
+  isActive = false;
 
   toggleActive() {
-    this.isActiveOpenCUD = !this.isActiveOpenCUD;
+    if (this.isActiveOpenCUD == 1) {
+      this.isActiveOpenCUD = 1;
+      this.isActive = !this.isActive;
+    }
+    if (this.isActiveOpenCUD == 2) {
+      this.isActiveOpenCUD = 2;
+      this.isActive = !this.isActive;
+    }
   }
 
-  toggleClose() {
-    this.isActiveOpenCUD = false;
+  toggleActiveClose() {
+    if (this.isActiveOpenCUD == 1) {
+      this.isActiveOpenCUD = 1;
+      this.isActive = !this.isActive;
+    }
+    if (this.isActiveOpenCUD == 2) {
+      this.isActiveOpenCUD = 2;
+      this.isActive = !this.isActive;
+    }
+  }
+
+  isActiveOpenCUD: number = 1;
+
+  toggleCloseAdd() {
+    this.isActiveOpenCUD = 1;
+  }
+
+  toggleCloseEdit() {
+    this.isActiveOpenCUD = 2;
   }
 }

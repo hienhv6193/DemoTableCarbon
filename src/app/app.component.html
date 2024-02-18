@@ -1,51 +1,61 @@
-<div class="all">
-  <cds-table-container>
-    <cds-table-header>
-      <h4 cdsTableHeaderTitle>Filter table</h4>
-    </cds-table-header>
-    <cds-table-toolbar>
-      <cds-table-toolbar-content>
-        <cds-table-toolbar-search
-          [expandable]="true"
-        >
-        </cds-table-toolbar-search>
-        <button cdsButton="primary" size="sm">
-          Primary Button
-          <svg cdsIcon="add" size="20" class="cds--btn__icon"></svg>
-        </button>
-      </cds-table-toolbar-content>
-    </cds-table-toolbar>
-    <div class="table">
-      <cds-table
-        [model]="model"
-        [size]="'md'"
-        [sortable]="sortable"
-        [showSelectionColumn]="showSelectionColumn"
-        [stickyHeader]="stickyHeader"
-        [skeleton]="skeleton"
-        [isDataGrid]="isDataGrid"
-        [striped]="striped">
-      </cds-table>
-      <cds-pagination-nav
-        [model]="model"
-        [disabled]="disabled"
-        [numOfItemsToShow]="8"
-        (selectPage)="selectPage($event)">
-      </cds-pagination-nav>
-    </div>
-  </cds-table-container>
-
-
-  @if (isActiveOpenCUD == true) {
-    <div class="open" id="active">
-      <button>23</button>
-      <button (click)="toggleClose()">Exit</button>
-    </div>
-  }
+<div class="all" [ngClass]="isActive ? 'collaped' : ''">
+  <div class="search">
+    <cds-table-container>
+      <cds-table-header>
+        <h4 cdsTableHeaderTitle>Filter table</h4>
+      </cds-table-header>
+      <cds-table-toolbar>
+        <cds-table-toolbar-content>
+          <cds-table-toolbar-search
+            [expandable]="true"
+          >
+          </cds-table-toolbar-search>
+          <button cdsButton="primary" size="sm">
+            Primary Button
+            <svg cdsIcon="add" size="20" class="cds--btn__icon"></svg>
+          </button>
+        </cds-table-toolbar-content>
+      </cds-table-toolbar>
+      <div class="table">
+        <cds-table
+          [model]="model"
+          [size]="'md'"
+          [sortable]="sortable"
+          [showSelectionColumn]="showSelectionColumn"
+          [stickyHeader]="stickyHeader"
+          [skeleton]="skeleton"
+          [isDataGrid]="isDataGrid"
+          [striped]="striped">
+        </cds-table>
+        <cds-pagination-nav
+          [model]="model"
+          [disabled]="disabled"
+          [numOfItemsToShow]="8"
+          (selectPage)="selectPage($event)">
+        </cds-pagination-nav>
+      </div>
+    </cds-table-container>
+  </div>
+  <div class="form">
+    @if (isActive == true) {
+      @if (isActiveOpenCUD == 1) {
+        <div class="open">
+          <h2>Add</h2>
+          <button (click)="toggleActiveClose()">Exit</button>
+        </div>
+      }
+      @else {
+        <div class="open">
+          <h2>Edit</h2>
+          <button (click)="toggleActiveClose()">Exit</button>
+        </div>
+      }
+    }
+  </div>
 </div>
 
 <ng-template #overflowMenuItemTemplateImg let-data="data">
-  <img style="width: 100px;height: 100px"
+  <img style="width: 50px;height: 50px"
        src="https://static-images.vnncdn.net/files/publish/2024/1/8/de-bruyne-chi-mat-17-phut-khien-tien-dao-mu-be-mat-1079.jpg">
 </ng-template>
 
@@ -65,6 +75,7 @@
     type="button"
     (click)="toggleActive()"
   >
+    Edit
     <svg class="cds--btn__icon" cdsIcon="add" size="16"></svg>
   </cds-icon-button>
 </ng-template>
@@ -72,7 +83,6 @@
   <cds-icon-button
     buttonId="icon-btn1"
     type="button"
-    (click)="toggleActive()"
   >
     <svg class="cds--btn__icon" cdsIcon="add" size="16"></svg>
   </cds-icon-button>

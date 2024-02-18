@@ -1,21 +1,40 @@
 .all {
-  width: 100%;
+  width: calc(100% - 200px);
   display: flex;
   flex-direction: row;
-  margin: 0 20px 20px 20px;
+  z-index: 1;
+  top: 0;
+  // margin: 0 20px 20px 20px;
+  transition: all .5s ease;
+  height: 100%;
 
-
-  cds-table-container {
-    width: calc(100% - 200px);
-  }
-
-  .table {
+  .search {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    cds-table-container{
+      width: 90%;
+      min-width: 90%;
+    }
+    .table {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
 
-    cds-pagination-nav {
-      align-self: center;
+      cds-pagination-nav {
+        align-self: center;
+      }
     }
   }
+}
+
+.collaped {
+  width: 100%;
+}
+
+.form {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
